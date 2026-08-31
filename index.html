@@ -30,7 +30,7 @@
     overflow-x:hidden;
   }
   ::selection{background:var(--blush); color:var(--cream);}
- 
+
   .eyebrow{
     text-transform:uppercase;
     letter-spacing:0.35em;
@@ -38,7 +38,7 @@
     color:var(--rose);
     font-weight:500;
   }
- 
+
   /* ---------- starfield (hero only) ---------- */
   .star-field{
     position:absolute; inset:0; overflow:hidden; z-index:1;
@@ -80,7 +80,7 @@
   @media (prefers-reduced-motion: reduce){
     .star, .shooting-star{ animation:none; opacity:0.6; }
   }
- 
+
   /* ---------- ambient floating petals ---------- */
   .petal-field{
     position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden;
@@ -99,7 +99,7 @@
   @media (prefers-reduced-motion: reduce){
     .petal{ animation:none; display:none; }
   }
- 
+
   /* ---------- hero ---------- */
   .hero{
     min-height:100vh;
@@ -128,7 +128,7 @@
     line-height:1.6;
     position:relative; z-index:2;
   }
- 
+
   .countdown{
     display:flex; gap:clamp(0.75rem, 3vw, 2rem);
     margin-bottom:2.5rem;
@@ -152,7 +152,7 @@
     color:var(--rose);
     margin-top:0.4rem;
   }
- 
+
   .scroll-hint{
     font-size:0.75rem;
     letter-spacing:0.2em;
@@ -165,7 +165,7 @@
     0%,100%{ transform:translateY(0); }
     50%{ transform:translateY(8px); }
   }
- 
+
   /* ---------- section shared ---------- */
   section{
     position:relative; z-index:2;
@@ -190,7 +190,7 @@
     margin:0 auto 3rem;
     font-size:0.95rem;
   }
- 
+
   /* ---------- letter / envelope ---------- */
   .letter-wrap{
     display:flex; flex-direction:column; align-items:center;
@@ -245,7 +245,7 @@
     text-transform:uppercase;
     color:var(--rose);
   }
- 
+
   .letter{
     max-width:34rem;
     margin:2.5rem auto 0;
@@ -272,7 +272,7 @@
     font-style:italic;
     margin-top:1.5rem;
   }
- 
+
   /* ---------- gallery ---------- */
   .gallery{
     display:grid;
@@ -301,7 +301,7 @@
     overflow:hidden;
   }
   .frame-photo img{
-    width:100%; height:100%; object-fit:cover; display:none;
+    width:100%; height:100%; object-fit:cover;
   }
   .frame-cap{
     text-align:center;
@@ -312,7 +312,7 @@
     opacity:0.8;
     margin-top:0.75rem;
   }
- 
+
   /* ---------- cake ---------- */
   .cake-wrap{
     display:flex; flex-direction:column; align-items:center;
@@ -337,6 +337,7 @@
     animation:flicker 1.4s ease-in-out infinite;
     transform-origin:center bottom;
     transition:opacity 0.5s ease;
+    transform: translate(10px, 10px);
   }
   .flame:nth-child(2){ animation-delay:0.2s; }
   @keyframes flicker{
@@ -381,7 +382,7 @@
     transition:opacity 0.6s ease;
   }
   .wish-note.show{ opacity:1; }
- 
+
   /* ---------- reasons why ---------- */
   .reasons{
     display:flex; flex-direction:column; align-items:center;
@@ -418,7 +419,7 @@
     color:var(--rose);
     text-transform:uppercase;
   }
- 
+
   /* ---------- footer ---------- */
   footer{
     position:relative; z-index:2;
@@ -440,35 +441,35 @@
 </style>
 </head>
 <body>
- 
+
 <div class="petal-field" id="petalField"></div>
- 
+
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="star-field" id="starField"></div>
- 
+
   <span class="eyebrow" style="position:relative; z-index:2;">Happy birthday to</span>
   <h1 class="hero-name">Cedra</h1>
- 
+
   <!-- EDIT HERE: change this line to your own words -->
   <p class="hero-sub">A whole day just for you — because the world is simply better with you in it.</p>
- 
+
   <div class="countdown" id="countdown">
     <div class="cd-block"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
     <div class="cd-block"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
   </div>
- 
+
   <span class="scroll-hint">scroll down ↓</span>
 </section>
- 
+
 <!-- ===================== LETTER ===================== -->
 <section id="letter-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">A little something</p>
   <h2 class="section-title">Open when ready</h2>
   <p class="section-lede">Click the seal to open the envelope.</p>
- 
+
   <div class="letter-wrap">
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
       <div class="env-body"></div>
@@ -476,7 +477,7 @@
       <div class="seal">C</div>
     </div>
     <span class="env-hint">tap to open</span>
- 
+
     <!-- EDIT HERE: replace this whole letter with your own message -->
     <div class="letter" id="letterText">
       <p>Cedra,</p>
@@ -487,17 +488,17 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ===================== CAKE ===================== -->
 <section id="cake-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">Make a wish</p>
   <h2 class="section-title">One candle, one wish</h2>
   <p class="section-lede">Click the button to blow out the candles.</p>
- 
+
   <div class="cake-wrap">
     <div class="cake-stage" id="cakeStage">
       <div class="confetti-layer" id="confettiLayer"></div>
- 
+
       <svg class="cake-svg" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
@@ -526,67 +527,69 @@
         <g>
           <rect x="95" y="66" width="6" height="26" rx="2" fill="#F3E7EA"/>
           <rect x="119" y="66" width="6" height="26" rx="2" fill="#F3E7EA"/>
-          <g class="flame" transform="translate(98,66)">
-            <circle cx="0" cy="-10" r="26" fill="url(#candleGlow)"/>
-            <path d="M0 2 C -6 -6 6 -10 0 -24 C -9 -15 -9 -6 0 2 Z" fill="url(#flameGrad)"/>
+          <line x1="98" y1="66" x2="98" y2="59" stroke="#4A3A2E" stroke-width="1.5"/>
+          <line x1="122" y1="66" x2="122" y2="59" stroke="#4A3A2E" stroke-width="1.5"/>
+          <g class="flame" transform="translate(98,59)">
+            <circle cx="0" cy="-10" r="17" fill="url(#candleGlow)"/>
+            <path d="M0 1 C -6 -6 6 -10 0 -22 C -9 -14 -9 -5 0 1 Z" fill="url(#flameGrad)"/>
             <ellipse cx="0" cy="-6" rx="2" ry="4" fill="#FFFDF3" opacity="0.85"/>
           </g>
-          <g class="flame" transform="translate(122,66)">
-            <circle cx="0" cy="-10" r="26" fill="url(#candleGlow)"/>
-            <path d="M0 2 C -6 -6 6 -10 0 -24 C -9 -15 -9 -6 0 2 Z" fill="url(#flameGrad)"/>
+          <g class="flame" transform="translate(122,59)">
+            <circle cx="0" cy="-10" r="17" fill="url(#candleGlow)"/>
+            <path d="M0 1 C -6 -6 6 -10 0 -22 C -9 -14 -9 -5 0 1 Z" fill="url(#flameGrad)"/>
             <ellipse cx="0" cy="-6" rx="2" ry="4" fill="#FFFDF3" opacity="0.85"/>
           </g>
-          <g class="smoke" transform="translate(98,44)">
+          <g class="smoke" transform="translate(98,38)">
             <ellipse cx="0" cy="0" rx="3" ry="6" fill="#D9CBD3"/>
           </g>
-          <g class="smoke" transform="translate(122,44)">
+          <g class="smoke" transform="translate(122,38)">
             <ellipse cx="0" cy="0" rx="3" ry="6" fill="#D9CBD3"/>
           </g>
         </g>
       </svg>
     </div>
- 
+
     <button class="wish-btn" id="wishBtn">Blow out the candles</button>
     <p class="wish-note" id="wishNote">wish made — happy birthday, Cedra</p>
   </div>
 </section>
- 
+
 <!-- ===================== GALLERY ===================== -->
 <section id="gallery-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">Little moments</p>
   <h2 class="section-title">Our gallery</h2>
   <p class="section-lede">Replace these frames with your own photos — see the note in the code for how.</p>
- 
+
   <!-- EDIT HERE: for each frame, set the <img src="..."> and remove style="display:none" -->
   <div class="gallery">
     <div class="frame">
-      <div class="frame-photo">♡<img src="" alt=""></div>
+      <div class="frame-photo">♡<img src="https://drive.google.com/file/d/19RMzAmZ_ZyWcVotUKoFimrRKdvxK8z0M/view?usp=sharing"></div>
       <p class="frame-cap">add a caption</p>
     </div>
     <div class="frame">
-      <div class="frame-photo">♡<img src="" alt=""></div>
+      <div class="frame-photo">♡<img src="https://drive.google.com/file/d/1_7XkrQRFV02hTetjFOh-y5-JjtINJ7z-/view?usp=sharing"></div>
       <p class="frame-cap">add a caption</p>
     </div>
   </div>
 </section>
- 
+
 <!-- ===================== REASONS ===================== -->
 <section id="reasons-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">Just because</p>
   <h2 class="section-title">A reason, every time you click</h2>
- 
+
   <div class="reasons">
     <button class="reason-btn" id="reasonBtn">Give me a reason</button>
     <p class="reason-display" id="reasonDisplay">&nbsp;</p>
     <span class="reason-count" id="reasonCount"></span>
   </div>
 </section>
- 
+
 <footer>
   <div class="mark">Cedra</div>
   <div class="date">September 1st</div>
 </footer>
- 
+
 <script>
   /* ---------- starfield ---------- */
   const starField = document.getElementById('starField');
@@ -608,7 +611,7 @@
     sh.style.animationDelay = (i*4 + Math.random()*3) + 's';
     starField.appendChild(sh);
   }
- 
+
   /* ---------- floating petals ---------- */
   const petalField = document.getElementById('petalField');
   const petalCount = 14;
@@ -622,7 +625,7 @@
     p.style.animationDelay = (Math.random()*10) + 's';
     petalField.appendChild(p);
   }
- 
+
   /* ---------- countdown to next Sept 1 ---------- */
   function nextBirthday(){
     const now = new Date();
@@ -647,7 +650,7 @@
   }
   tick();
   setInterval(tick, 1000);
- 
+
   /* ---------- envelope open ---------- */
   const envelope = document.getElementById('envelope');
   const letterText = document.getElementById('letterText');
@@ -659,14 +662,14 @@
   envelope.addEventListener('keydown', (e)=>{
     if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openEnvelope(); }
   });
- 
+
   /* ---------- cake: blow candles + confetti ---------- */
   const cakeStage = document.getElementById('cakeStage');
   const wishBtn = document.getElementById('wishBtn');
   const wishNote = document.getElementById('wishNote');
   const confettiLayer = document.getElementById('confettiLayer');
   const confettiColors = ['#E6C577','#E3A0B4','#C98BA0','#F3E7EA'];
- 
+
   function launchConfetti(){
     confettiLayer.innerHTML = '';
     for(let i=0;i<28;i++){
@@ -685,7 +688,7 @@
       confettiLayer.appendChild(c);
     }
   }
- 
+
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
     @keyframes confetti-burst{
@@ -694,14 +697,14 @@
     }
   `;
   document.head.appendChild(styleSheet);
- 
+
   wishBtn.addEventListener('click', () => {
     if(cakeStage.classList.contains('blown')) return;
     cakeStage.classList.add('blown');
     launchConfetti();
     wishNote.classList.add('show');
   });
- 
+
   /* ---------- reasons why (EDIT this list) ---------- */
   const reasons = [
     "The way you laugh at your own jokes before you finish telling them.",
@@ -729,7 +732,6 @@
     reasonBtn.textContent = "Give me another";
   });
 </script>
- 
+
 </body>
 </html>
- 
