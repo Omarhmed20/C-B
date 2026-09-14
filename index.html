@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday, Cedra</title>
+<title>Happy Birthday, Malak</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500;1,600&family=Parisienne&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#150F1C;
-    --bg-soft:#1F1728;
-    --card:#241B2E;
-    --blush:#3A2536;
-    --rose:#E3A0B4;
-    --rose-soft:#C98BA0;
-    --cream:#F3E7EA;
-    --gold:#E6C577;
-    --ink:#D9CBD3;
+    --bg:#1A0C10;
+    --bg-soft:#26121A;
+    --card:#331722;
+    --blush:#4C1F2C;
+    --rose:#B84A5C;
+    --rose-soft:#8C2C3B;
+    --cream:#F1DEE2;
+    --gold:#D6A857;
+    --ink:#DCC3C9;
     --star:#FFF3D6;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -107,7 +107,7 @@
     text-align:center;
     padding:3rem 1.5rem;
     position:relative; z-index:2;
-    background:radial-gradient(ellipse at 50% 15%, #241C30 0%, var(--bg) 70%);
+    background:radial-gradient(ellipse at 50% 15%, #351822 0%, var(--bg) 70%);
     overflow:hidden;
   }
   .hero-name{
@@ -226,7 +226,7 @@
     width:52px; height:52px;
     border-radius:50%;
     background:var(--rose-soft);
-    color:#241B2E;
+    color:var(--cream);
     display:flex; align-items:center; justify-content:center;
     font-family:'Parisienne', cursive;
     font-size:1.4rem;
@@ -337,7 +337,6 @@
     animation:flicker 1.4s ease-in-out infinite;
     transform-origin:center bottom;
     transition:opacity 0.5s ease;
-    transform: translate(120px, 120px);
   }
   .flame:nth-child(2){ animation-delay:0.2s; }
   @keyframes flicker{
@@ -358,7 +357,7 @@
   .wish-btn{
     margin-top:2.5rem;
     background:var(--rose-soft);
-    color:#241B2E;
+    color:var(--cream);
     border:none;
     padding:0.9rem 2.2rem;
     border-radius:999px;
@@ -438,18 +437,49 @@
     color:var(--rose);
     margin-top:0.5rem;
   }
+
+  /* ---------- music toggle ---------- */
+  .music-btn{
+    position:fixed;
+    bottom:1.5rem; right:1.5rem;
+    z-index:50;
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--card);
+    border:1px solid var(--rose-soft);
+    color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    transition:transform 0.25s ease, background 0.25s ease;
+  }
+  .music-btn:hover{ transform:scale(1.08); background:var(--blush); }
+  .music-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .music-btn.playing{ animation:pulse-note 1.6s ease-in-out infinite; }
+  @keyframes pulse-note{
+    0%,100%{ box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(214,168,87,0.35); }
+    50%{ box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 10px rgba(214,168,87,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .music-btn.playing{ animation:none; }
+  }
 </style>
 </head>
 <body>
 
 <div class="petal-field" id="petalField"></div>
 
+<!-- EDIT HERE: put an mp3 file in the same folder as this html and set the src below -->
+<audio id="bgMusic" src="song.mp3" loop preload="none"></audio>
+<button class="music-btn" id="musicBtn" aria-label="Play music" title="Play music">♪</button>
+
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="star-field" id="starField"></div>
 
   <span class="eyebrow" style="position:relative; z-index:2;">Happy birthday to</span>
-  <h1 class="hero-name">Cedra</h1>
+  <h1 class="hero-name">Malak</h1>
 
   <!-- EDIT HERE: change this line to your own words -->
   <p class="hero-sub">A whole day just for you — because the world is simply better with you in it.</p>
@@ -474,18 +504,18 @@
     <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
       <div class="env-body"></div>
       <div class="env-flap"></div>
-      <div class="seal">C</div>
+      <div class="seal">M</div>
     </div>
     <span class="env-hint">tap to open</span>
 
     <!-- EDIT HERE: replace this whole letter with your own message -->
     <div class="letter" id="letterText">
-      <p>Cedra,</p>
-      <p>I hope this new year of your life brings you a lot of happiness, peace, and beautiful moments that you genuinely deserve.</p>
-      <p>I’m really happy that I got to know you, and I hope you always stay the person you are, with all the little things that make you, you.</p>
-      <p>Today is your day, and I wanted to make something small and honest for you. Nothing fancy, just a little corner of the internet that says what I mean.</p>
-      <p>And I also wanted to say congratulations on your hijab 🤍 I know it’s a meaningful step, and I’m genuinely happy for you. I hope it brings you even more peace and confidence, and that you always feel good and comfortable with your choice.</p>
-      <p>Take care of yourself, enjoy your day, and hopefully this year is much kinder to you than the last one. Happy birthday again, and congratulations on your hijab 🤍✨</p></p>
+      <p>Malak,</p>
+      <p>I'm not really sure how to start this, but I wanted to say that this past month of getting to know you has been one of the best months I've had in a while. Every time we talk, I just want to know you more.</p>
+      <p>Today's your day, and I wanted to make you something small and simple to show you how happy I am that I met you, and how much I like you.</p>
+      <p>I really hope we get to meet soon, and laugh together the way we do from behind the screen.</p>
+      <p>Happy birthday, Malak. I hope your day is exactly like your smile — simple, warm, and beautiful.</p>
+      <p class="sign-off">— with care</p>
     </div>
   </div>
 </section>
@@ -515,13 +545,13 @@
           </linearGradient>
         </defs>
         <!-- plate -->
-        <ellipse cx="110" cy="182" rx="86" ry="10" fill="#3A2536"/>
+        <ellipse cx="110" cy="182" rx="86" ry="10" fill="#26121A"/>
         <!-- bottom tier -->
-        <rect x="35" y="130" width="150" height="45" rx="6" fill="#8C5A73"/>
-        <rect x="35" y="130" width="150" height="10" rx="4" fill="#A6708A"/>
+        <rect x="35" y="130" width="150" height="45" rx="6" fill="#6E2333"/>
+        <rect x="35" y="130" width="150" height="10" rx="4" fill="#8C2C3B"/>
         <!-- top tier -->
-        <rect x="60" y="90" width="100" height="45" rx="6" fill="#B37992"/>
-        <rect x="60" y="90" width="100" height="10" rx="4" fill="#C98BA0"/>
+        <rect x="60" y="90" width="100" height="45" rx="6" fill="#8C2C3B"/>
+        <rect x="60" y="90" width="100" height="10" rx="4" fill="#B84A5C"/>
         <!-- drips -->
         <path d="M60 100 q5 12 0 20 q6 -6 6 4 q6 -10 4 2 q6 -8 6 4 q6 -14 4 0 q6 -8 6 6 q6 -12 4 0 q6 -8 6 6 q6 -14 4 2 q6 -10 4 4 q4 -8 0 -18 Z" fill="#E6C577" opacity="0.55"/>
         <!-- candles -->
@@ -551,23 +581,23 @@
     </div>
 
     <button class="wish-btn" id="wishBtn">Blow out the candles</button>
-    <p class="wish-note" id="wishNote">wish made — happy birthday, Cedra</p>
+    <p class="wish-note" id="wishNote">wish made — happy birthday, Malak</p>
   </div>
 </section>
 
 <!-- ===================== GALLERY ===================== -->
 <section id="gallery-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">Little moments</p>
-  <h2 class="section-title">Gallery</h2>
-  <p class="section-lede">May God make this a beautiful and blessed new chapter for you and keep you strong in it.</p>
+  <h2 class="section-title">Our gallery</h2>
+  <p class="section-lede"I hope it was a great year with great memories.</p>
 
-  <!-- EDIT HERE: for each frame, set the <img src="..."> and remove style="display:none" -->
+  <!-- EDIT HERE: for each frame, set the <img src="..."> to a DIRECT image link (or a local file next to this html) -->
   <div class="gallery">
     <div class="frame">
-      <div class="frame-photo">♡<img src="Screenshot 2026-09-14 235400.png"></div>
+      <div class="frame-photo"><img src="Screenshot 2026-09-14 235400.png" alt="Malak photo 1"></div>
     </div>
     <div class="frame">
-      <div class="frame-photo">♡<img src="IMG_8816.PNG"></div>
+      <div class="frame-photo"><img src="https://drive.google.com/uc?export=view&id=1_7XkrQRFV02hTetjFOh-y5-JjtINJ7z-" alt="Malak photo 2"></div>
     </div>
   </div>
 </section>
@@ -585,11 +615,30 @@
 </section>
 
 <footer>
-  <div class="mark">Cedra</div>
-  <div class="date">September 1st</div>
+  <div class="mark">Malak</div>
+  <div class="date">September 15th</div>
 </footer>
 
 <script>
+  /* ---------- music toggle ---------- */
+  const bgMusic = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  musicBtn.addEventListener('click', () => {
+    if(bgMusic.paused){
+      bgMusic.play().catch(() => {
+        alert('Add an mp3 file named "song.mp3" next to this html file for the music to play.');
+      });
+      musicBtn.classList.add('playing');
+      musicBtn.textContent = '❚❚';
+      musicBtn.title = 'Pause music';
+    } else {
+      bgMusic.pause();
+      musicBtn.classList.remove('playing');
+      musicBtn.textContent = '♪';
+      musicBtn.title = 'Play music';
+    }
+  });
+
   /* ---------- starfield ---------- */
   const starField = document.getElementById('starField');
   const starCount = 70;
@@ -629,8 +678,8 @@
   function nextBirthday(){
     const now = new Date();
     let year = now.getFullYear();
-    let target = new Date(year, 8, 1, 0, 0, 0); // month 8 = September
-    if(target < now){ target = new Date(year+1, 8, 1, 0, 0, 0); }
+    let target = new Date(year, 8, 15, 0, 0, 0); // month 8 = September
+    if(target < now){ target = new Date(year+1, 8, 15, 0, 0, 0); }
     return target;
   }
   const target = nextBirthday();
@@ -667,7 +716,7 @@
   const wishBtn = document.getElementById('wishBtn');
   const wishNote = document.getElementById('wishNote');
   const confettiLayer = document.getElementById('confettiLayer');
-  const confettiColors = ['#E6C577','#E3A0B4','#C98BA0','#F3E7EA'];
+  const confettiColors = ['#D6A857','#B84A5C','#8C2C3B','#F1DEE2'];
 
   function launchConfetti(){
     confettiLayer.innerHTML = '';
@@ -706,6 +755,7 @@
 
   /* ---------- reasons why (EDIT this list) ---------- */
   const reasons = [
+    "The way you laugh at your own jokes before you finish telling them.",
     "You remember the small things people forget they even said.",
     "You make ordinary days feel like they matter.",
     "Your patience with the people who need it most.",
