@@ -437,42 +437,11 @@
     color:var(--rose);
     margin-top:0.5rem;
   }
-
-  /* ---------- music toggle ---------- */
-  .music-btn{
-    position:fixed;
-    bottom:1.5rem; right:1.5rem;
-    z-index:50;
-    width:52px; height:52px;
-    border-radius:50%;
-    background:var(--card);
-    border:1px solid var(--rose-soft);
-    color:var(--cream);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.3rem;
-    cursor:pointer;
-    box-shadow:0 6px 18px rgba(0,0,0,0.45);
-    transition:transform 0.25s ease, background 0.25s ease;
-  }
-  .music-btn:hover{ transform:scale(1.08); background:var(--blush); }
-  .music-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
-  .music-btn.playing{ animation:pulse-note 1.6s ease-in-out infinite; }
-  @keyframes pulse-note{
-    0%,100%{ box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(214,168,87,0.35); }
-    50%{ box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 10px rgba(214,168,87,0); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .music-btn.playing{ animation:none; }
-  }
 </style>
 </head>
 <body>
 
 <div class="petal-field" id="petalField"></div>
-
-<!-- EDIT HERE: put an mp3 file in the same folder as this html and set the src below -->
-<audio id="bgMusic" src="song.mp3" loop preload="none"></audio>
-<button class="music-btn" id="musicBtn" aria-label="Play music" title="Play music">♪</button>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
@@ -589,7 +558,7 @@
 <section id="gallery-section">
   <p class="eyebrow" style="text-align:center; display:block; margin-bottom:0.5rem;">Little moments</p>
   <h2 class="section-title">Gallery</h2>
-  <p class="section-lede"I hope it was a great year with great memories.</p>
+  <p class="section-lede">I hope it was a great year with great memories.</p>
 
   <!-- EDIT HERE: for each frame, set the <img src="..."> to a DIRECT image link (or a local file next to this html) -->
   <div class="gallery">
@@ -620,25 +589,6 @@
 </footer>
 
 <script>
-  /* ---------- music toggle ---------- */
-  const bgMusic = document.getElementById('bgMusic');
-  const musicBtn = document.getElementById('musicBtn');
-  musicBtn.addEventListener('click', () => {
-    if(bgMusic.paused){
-      bgMusic.play().catch(() => {
-        alert('Add an mp3 file named "song.mp3" next to this html file for the music to play.');
-      });
-      musicBtn.classList.add('playing');
-      musicBtn.textContent = '❚❚';
-      musicBtn.title = 'Pause music';
-    } else {
-      bgMusic.pause();
-      musicBtn.classList.remove('playing');
-      musicBtn.textContent = '♪';
-      musicBtn.title = 'Play music';
-    }
-  });
-
   /* ---------- starfield ---------- */
   const starField = document.getElementById('starField');
   const starCount = 70;
@@ -674,7 +624,7 @@
     petalField.appendChild(p);
   }
 
-  /* ---------- countdown to next Sept 1 ---------- */
+  /* ---------- countdown to next Sept 15 ---------- */
   function nextBirthday(){
     const now = new Date();
     let year = now.getFullYear();
